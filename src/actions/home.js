@@ -12,3 +12,8 @@ export const fetchApiSucceeded = createAction(
   identity
 )
 
+export const fetchApiFailed = createAction(
+  'FETCH_API_FAILED',
+  identity
+)
+

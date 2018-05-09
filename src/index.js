@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { createStore, applyMiddleware } from 'redux'
 import createSagaMiddleware from 'redux-saga'
 import { Provider } from 'react-redux'
-
+import logger from 'redux-logger'
 
 import reducers from './reducers/reducers'
 import index from './sagas/index'
@@ -14,9 +14,10 @@ import registerServiceWorker from './registerServiceWorker';
 
 const sagaMiddleware = createSagaMiddleware()
 
+
 const store = createStore(
   reducers,
-  applyMiddleware(sagaMiddleware))
+  applyMiddleware(sagaMiddleware, logger))
 
 sagaMiddleware.run(index)
 
@@ -25,4 +26,5 @@ ReactDOM.render(
     <Router />
   </Provider>,
   document.getElementById('root'));
+
 registerServiceWorker();

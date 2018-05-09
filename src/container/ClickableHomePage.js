@@ -2,22 +2,22 @@ import { connect } from 'react-redux/es'
 
 import Home from '../components/Home'
 import { fetchApiRequested } from '../actions/home'
+import { getHealth } from '../selectors/Home'
 
 export const mapStateToProps = state => ({
-
+    home: getHealth(state)
 })
 
 export const mapDispatchToProps = dispatch => {
    return {
      getApiRequest: () => {
-       console.log('The action is fired')
        return dispatch(fetchApiRequested())
      }
    }
 }
 
 const ClickableHomePage = connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(Home)
 
