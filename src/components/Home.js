@@ -26,19 +26,22 @@ export default class Home extends React.Component {
     const healthyString = `Status of api is: ${this.props.home.health.status}`
     const unhealthyString = `Errors were returned: ${this.props.home.errors}`
 
-    const healthyApiReturn = this.props.home.health.status == 'healthy'
+    console.log(unhealthyString)
+
+    const healthyApiReturn = this.props.home.health.status === 'healthy'
       ?
       <div>
         <p><label>{healthyString}</label></p>
       </div>
     : null
 
-    const unhealthyApiReturn = this.props.home.errors.count > 0
-      ?
-      <div>
+    console.log(this.props.home.errors)
+
+    const unhealthyApiReturn = this.props.home.errors === undefined
+      ? null
+      : <div>
         <p><label>{unhealthyString}</label></p>
       </div>
-      : null
 
     return (
       <div className="row">

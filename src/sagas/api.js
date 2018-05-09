@@ -1,7 +1,7 @@
 import { call } from 'redux-saga/effects'
 
-function* currencyAPI() {
-  const url = 'http://localhost:3002/health'
+function* healthAPI() {
+  const url = `/api/health`
   const options = {
     method: 'GET',
     headers: new Headers({
@@ -13,7 +13,7 @@ function* currencyAPI() {
 }
 
 export const api = {
-  currencyAPI
+  healthAPI
 }
 
 export const parseAsJson = string => {

@@ -1,21 +1,21 @@
 import { all, call, select, put, takeEvery, takeLatest } from 'redux-saga/effects'
 
-import { fetchApiRequested, fetchApiSucceeded, fetchApiFailed } from '../actions/home'
+import { fetchHealthApiRequested, fetchHealthApiSucceeded, fetchHealthApiFailed } from '../actions/home'
 import { api, parseAsJson } from './api'
 
-export function* watchForGetAPIRequested() {
-  yield takeLatest(fetchApiRequested.toString(), fetchApi)
+export function* watchForGetHealthAPIRequested() {
+  yield takeLatest(fetchHealthApiRequested.toString(), fetchHealthApi)
 }
 
-export function* fetchApi() {
+export function* fetchHealthApi() {
   try {
 
-    const response = yield call(api.currencyAPI);
+    const response = yield call(api.healthAPI);
     const json = yield call([response, response.json]);
-    yield put(fetchApiSucceeded({ json }));
+    yield put(fetchHealthApiSucceeded({ json }));
   } catch (error) {
 
-    yield put(fetchApiFailed(error));
+    yield put(fetchHealthApiFailed(error));
   }
 
 }

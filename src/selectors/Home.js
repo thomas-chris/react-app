@@ -23,4 +23,4 @@ export const propertyOr = (defaultValue, object, propertyOrArray) => {
 
 export const propertyOrNull = (object, property) => propertyOr(null, object, property)
 
-export const getHealth = state => propertyOrNull(state, 'home')
+export const getHome = state => propertyOrNull(state, 'home')

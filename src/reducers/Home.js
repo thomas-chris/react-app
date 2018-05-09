@@ -1,15 +1,20 @@
 import { handleActions } from 'redux-actions'
 
-import { fetchApiSucceeded } from '../actions/home'
+import { fetchHealthApiFailed, fetchHealthApiSucceeded } from '../actions/home'
 
 const initialState = {
-  health: {},
-  errors: []
+  health: {}
 }
 
 export const home = handleActions({
- [fetchApiSucceeded]:  (state, action) => {
+ [fetchHealthApiSucceeded]:  (state, action) => {
    return { ...state,
-     health: action.payload.json}
- }
+     health: action.payload.json,
+    errors: undefined}
+ },
+  [fetchHealthApiFailed]: (state, action) => {
+   return { ...initialState,
+    errors: action.payload,
+   }
+  }
 }, initialState )

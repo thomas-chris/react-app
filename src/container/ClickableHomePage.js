@@ -1,17 +1,17 @@
 import { connect } from 'react-redux/es'
 
 import Home from '../components/Home'
-import { fetchApiRequested } from '../actions/home'
-import { getHealth } from '../selectors/Home'
+import { fetchHealthApiRequested } from '../actions/home'
+import { getHome } from '../selectors/Home'
 
 export const mapStateToProps = state => ({
-    home: getHealth(state)
+    home: getHome(state),
 })
 
 export const mapDispatchToProps = dispatch => {
    return {
      getApiRequest: () => {
-       return dispatch(fetchApiRequested())
+       return dispatch(fetchHealthApiRequested())
      }
    }
 }
