@@ -52,7 +52,7 @@ export default class Home extends React.Component {
         </header>
         </div>
           <div>
-            <label>Hit the button to show what an action does</label>
+            <label>Hit the button to check the API Health</label>
             <button onClick={this.handleClick}>Hit Me</button>
             {healthyApiReturn}
             {unhealthyApiReturn}

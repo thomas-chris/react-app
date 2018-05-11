@@ -12,8 +12,34 @@ function* healthAPI() {
   return yield call(fetch, url, options)
 }
 
+function* units() {
+  const url = `/api/units`
+  const options = {
+    method: 'GET',
+    headers: new Headers({
+      'Content-Type': 'application/json',
+      Accept: 'application/json'
+    })
+  }
+  return yield call(fetch, url, options)
+}
+
+function* unit(unit) {
+  const url = `/api/units/${unit.value}`
+  const options = {
+    method: 'GET',
+    headers: new Headers({
+      'Content-Type': 'application/json',
+      Accept: 'application/json'
+    })
+  }
+  return yield call(fetch, url, options)
+}
+
 export const api = {
-  healthAPI
+  healthAPI,
+  units,
+  unit
 }
 
 export const parseAsJson = string => {
